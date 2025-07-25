@@ -1,6 +1,7 @@
-from typing import Any
-import httpx
 import logging
+from typing import Any
+
+import httpx
 from mcp.server.fastmcp import FastMCP
 
 # Initialize FastMCP server
@@ -55,6 +56,7 @@ async def get_alerts(state: str) -> str:
         return "No active alerts for this state."
 
     alerts = [format_alert(feature) for feature in data["features"]]
+    logging.info("\n---\n".join(alerts))
     return "\n---\n".join(alerts)
 
 
@@ -92,7 +94,22 @@ Forecast: {period['detailedForecast']}
 """
         forecasts.append(forecast)
 
+    logging.info("\n---\n".join(forecasts))
     return "\n---\n".join(forecasts)
+
+
+@mcp.tool()
+async def get_all_radar_stations() -> list[dict[str, Any]]:
+    """Get all radar stations from the NWS API."""
+    url = f"{NWS_API_BASE}/radar/stations"
+    data = await make_nws_request(url)
+
+    if not data or "features" not in data:
+        return []
+
+    logging.info(data)
+    return data["features"]
+
 
 if __name__ == "__main__":
     # Initialize and run the server
