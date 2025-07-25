@@ -1,3 +1,5 @@
+# This file is used currently to test against the NWS API outside of an MCP context
+# eg. hitting endpoints and constructing responses prior to integrating as a 'tool' to the MCP server
 # Constants
 import asyncio
 import logging
