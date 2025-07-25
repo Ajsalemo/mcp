@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "LocalWeatherMCP": {
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+        "run",
+        "/home/ajsalemo/code/mcp/server/weather.py"
+      ]
+    }
+  }
+}
