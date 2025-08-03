@@ -111,6 +111,19 @@ async def get_all_radar_stations() -> list[dict[str, Any]]:
     return data["features"]
 
 
+@mcp.tool()
+async def get_radar_station_info(station_id: str) -> dict[str, Any]:
+    """Get information about a specific radar station."""
+    url = f"{NWS_API_BASE}/radar/stations/{station_id}"
+    data = await make_nws_request(url)
+
+    if not data:
+        return {"error": "Unable to fetch radar station information."}
+
+    logging.info(data)
+    return data
+
+
 if __name__ == "__main__":
     # Initialize and run the server
     logging.info("Starting weather MCP server...")
