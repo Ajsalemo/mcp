@@ -1,0 +1,22 @@
+{
+    "servers": {
+        "node-mcp-weather": {
+            "type": "stdio",
+            "command": "node",
+            "args": [
+                "/home/ajssalemo/code/mcp/node/build/server.js"
+            ]
+        },
+        "python-mcp-weather": {
+            "type": "stdio",
+            "command": "/home/ajssalemo/.local/bin/uv",
+            "args": [
+                "--directory",
+                "/home/ajssalemo/code/mcp/python",
+                "run",
+                "weather.py",
+            ]
+        }
+    },
+    "inputs": []
+}
