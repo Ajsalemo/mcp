@@ -16,6 +16,14 @@
                 "run",
                 "weather.py",
             ]
+        },
+        "java-mcp-weather": {
+            "command": "java",
+            "args": [
+                "-Dspring.ai.mcp.server.stdio=true",
+                "-jar",
+                "/home/ajssalemo/code/mcp/java/target/weather-0.0.1-SNAPSHOT.jar"
+            ]
         }
     },
     "inputs": []
